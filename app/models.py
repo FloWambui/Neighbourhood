@@ -25,3 +25,18 @@ class NeighbourHood(models.Model):
     @classmethod
     def update_neighbourhood(cls, id):
         cls.objects.filter(id=id).delete()
+
+class Amenities(models.Model):
+    name = models.CharField(max_length=20)
+    location = models.CharField(max_length=20)
+    contact = models.CharField(max_length=30)
+    image = CloudinaryField('image',blank=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
+
+    def save_amenities(self):
+        self.save()
+
+    def __str__(self):
+        return f'{self.name}'
