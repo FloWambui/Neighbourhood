@@ -5,32 +5,27 @@
 {% load crispy_forms_tags %}
 
 
-<div class="container">
+<div class="container-fluid reg">
+    {% if form.errors %}
+    <p> Some Information Might be Incorrect </p>
+    {% endif %}
     <div class="row">
-        <div class="col-lg-4 col-md-3"></div>
-        <div class="col-lg-4 col-md-6">
-            {% if form.errors %}
-            <p> Password or Username is incorrect </p>
-            {% endif %}
-            <div class="panel panel-default">
-                <div class="main mt-5 mb-4">
-                    <div class="panel-heading text-center">
-                        <h1 class="p-4 bg-dark text-white">Login</h1>
-                        
-                    </div>
-                        
-                    <form action="/accounts/login/" method="post">
-                            {% csrf_token %}
-                            {{ login_form|crispy }}                    
-                            <button class="btn btn-dark mt-5" type="submit">LogIn</button>
-                        </form>
-                        <p class="text-center pt-5">Don't have an account? <a href="/register">Create an account</a>.</p>
-                    
-                </div>
-            </div> 
+        <div class="panel panel-default">
+            <div class="main px-3">
+                <div class="panel-heading text-center">
+                    <h1 class="p-4 text-white" style="text-decoration: underline;">Login</h1>
 
+                </div>
+
+                <form action="/accounts/login/" method="POST">
+                    {% csrf_token %}
+                    {{ login_form|crispy }}
+                    <button class="btn btn-warning mt-3" type="submit">LogIn</button>
+                </form>
+                <p class="text-center pt-5 pb-3">Don't have an account? <a href="/register" class="text-warning">Create an account. </a></p>
+
+            </div>
         </div>
-        <div class="col-lg-4 col-md-3"></div>
     </div>
 </div>
 {% endblock %}
