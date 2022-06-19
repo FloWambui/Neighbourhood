@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-size: 20px;
+}
+.reg {
+  background: url("/static/images/registration.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  filter: brightness(80%);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  border: 10px solid purple;
+
+}
+.help-block, .controls li{
+  display: none;
+}
+.main{
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  /* width: 30rem; */
+}
+.card-body{
+  border: 3px solid red !important; 
+}
+.textinput, .emailinput{
+  border: 3px solid white !important;
+  background-color: transparent !important;
+  width: 8cm !important;
+  border-radius: 5px;
+}
