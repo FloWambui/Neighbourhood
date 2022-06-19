@@ -1,0 +1,22 @@
+{%extends 'home.html'%}
+{% load static %}
+{% load bootstrap5 %}
+{% block content %}
+<div class="container-fluid homepage">
+    
+        <div class="welcome">
+            <div class="card mb-3" style="max-width: 28rem;height: 24rem;">
+                <div class="card-body text-white">
+                  <h3 class="card-title text-dark pt-4" style="font-size: 1.85rem;">Welcome to Hood-Connect</h3>
+                  <p class="card-text pt-3">Keep Tabs on what is happenning in your neighbourhood, <br> build a community around you<br>and live <em>Freely ...</em></p>
+                  <a href="/register"><button type="button" class="btn btn-warning btn-lg">Join us Today!</button></a>
+                  
+                </div>
+
+              </div>
+            
+        </div>
+
+    
+</div>
+{% endblock %}
