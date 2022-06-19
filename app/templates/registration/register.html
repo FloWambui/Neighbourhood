@@ -1,20 +1,33 @@
-{% extends "base.html" %}
+{%extends "registration/base.html"%} {% load bootstrap5 %}
 {% load static %}
-{% load bootstrap5 %}
-
-{% block content %} 
-
-{% load crispy_forms_tags %}         
-
-<!--Register--> 
+{% block content %}
+{% load crispy_forms_tags %}
+<!--Register-->
 <div class="container">
-	<h1>Register</h1>
-	<form method="POST">
-		{% csrf_token %}
-		{{ register_form|crispy }}                    
-		<button class="btn btn-primary" type="submit">Register</button>
-	</form>
-	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
-</div>
+    <div class="row">
+        <div class="col-lg-2 col-md-2"></div>
+        <div class="col-lg-8 col-md-8" style="border:3px solid red;">
+            {% if form.errors %}
+            <p> Some Information Might be Incorrect </p>
+            {% endif %}
+            <div class="panel panel-default">
+                <div class="main mt-5 mb-4">
+                    <div class="panel-heading">
+                        <h1 class="p-2">Sign Up</h1>
 
+                    </div>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ register_form|crispy }}
+                        <button class="btn btn-dark" type="submit">Sign Up</button>
+                    </form>
+                    <p class="pt-5">Already have an account? <a href="/login">Login</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2"></div>
+    </div>
+</div>
 {% endblock %}

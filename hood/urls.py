@@ -25,10 +25,9 @@ app_name = "app"
 urlpatterns = [
     re_path('admin/', admin.site.urls),
     re_path(r"^", include("app.urls")),
-    re_path("register", views.register_request, name="register"),
-    # re_path('accounts/register/',
-        #   RegistrationView.as_view(success_url='/'),
-        #   name='django_registration_register'),
+    re_path('accounts/register/',
+          RegistrationView.as_view(success_url='/'),
+          name='django_registration_register'),
    re_path('accounts/', include('django_registration.backends.one_step.urls')),
    re_path('accounts/', include('django.contrib.auth.urls')),
    re_path('logout/',auth_views.LogoutView.as_view(template_name = 'registration/login.html'), name = 'logout'),
