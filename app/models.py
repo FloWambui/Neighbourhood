@@ -6,7 +6,7 @@ from cloudinary.models import CloudinaryField
 
 class NeighbourHood(models.Model):
     name = models.CharField(max_length=20)
-    location = models.ForeignKey(on_delete=models.CASCADE)
+    location = models.CharField(max_length=20)
     occupants_count = models.IntegerField(default=0)
     image = CloudinaryField('image',blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -31,7 +31,7 @@ class Amenities(models.Model):
     location = models.CharField(max_length=20)
     contact = models.CharField(max_length=30)
     image = CloudinaryField('image',blank=True)
-    pub_date = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
 
@@ -40,3 +40,14 @@ class Amenities(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = CloudinaryField('image',blank=True)
+    bio = models.CharField(max_length=255, blank=True)
+    contacts = models.CharField(max_length=200)
+    date = models.DateTimeField(auto_now_add=True)
+    hood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
