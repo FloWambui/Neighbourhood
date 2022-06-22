@@ -37,3 +37,9 @@ class PostBusinessForm(forms.ModelForm):
     class Meta:
         model = Business
         fields = ["name", "address", "image", "details", "hood"]
+
+
+class PostAnnouncement(forms.ModelForm):
+    class Meta:
+        model = Announcements
+        fields = ["title", "details"]

@@ -85,7 +85,7 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
-@login_required(login_url='/login')
+@login_required
 def post_business(request):
     current_user = request.user
     if request.method == 'POST':
@@ -98,3 +98,21 @@ def post_business(request):
     else:
         form = PostBusinessForm(auto_id=False)
     return render(request, 'business.html', {"form": form})
+
+@login_required
+def announcements(request):
+    user = Profile.objects.get(user=request.user.id)
+    announcements = Announcements.objects.all().filter(hood=user.hood)
+    current_user = request.user
+    if request.method == 'POST':
+        hood = NeighbourHood.objects.get(name=user.hood)
+        form = PostAnnouncement(request.POST, request.FILES)
+        if form.is_valid():
+            title = form.save(commit=False)
+            title.author = current_user
+            title.hood = hood
+            title.save()
+            return redirect('/announce/')
+    else:
+        form = PostAnnouncement(auto_id=False)
+    return render(request, 'announce.html', {"announcements": announcements, "form": form})

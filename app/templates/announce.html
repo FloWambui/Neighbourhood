@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content%}
+<style>
+.textarea{
+    width:10cm !important;
+}
+</style>
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" style="display:flex; justify-content:center;align-content:center;align-items:center;">
+            
+            <form action="" class="c" method="post" enctype="multipart/form-data">
+                <h3><b> Post Announcements</b></h3>
+                {% csrf_token %}
+                {{form|crispy}}
+                <button class="btn btn-sm btn-warning mb-2" type="submit">Post</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<div class="container-fluid mt-2">
+    <h4 class="text-center"><b>{{announcements|length}} Announcements</b></h4>
+    <div class="row" style="display: flex; flex-direction: row;">
+  
+        <div class="col-lg-4 col-md-6 text-center">            
+            {% for announcement in announcements %}
+            <div class="card mb-3"style="background-color:white;border: 3px solid rgb(247,193,50); border-radius: 10px;">
+                <div class="card-header">
+                    <h3><b>{{announcement.title}}</b></h3>
+                </div>
+                <div class="card-body">
+                    {{announcement.details}}
+                </div>
+                <div class="card-footer">
+                    <p class="text-muted">
+                        Posted: {{announcement.created_on|timesince}} ago <br>
+                        By: {{announcement.author|capfirst}}</p>
+                </div>
+            </div>
+            {% empty %}
+            {% endfor %}
+        </div>
+     </div>
+</div>
+{% endblock %}
