@@ -34,7 +34,7 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"You are now logged in as {username}.")
-				return redirect("app:index")
+				return redirect("app:create_profile")
 			else:
 				messages.error(request,"Invalid username or password.")
 		else:
@@ -56,3 +56,22 @@ def index(request):
         "business": business
     }
     return render(request, 'main.html', context)
+
+@login_required
+def create_profile(request):
+
+    Profile.objects.get_or_create(user=request.user)
+    
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,
+                                   request.FILES, instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            return redirect('/profile/')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,
+                                   request.FILES, instance=request.user.profile)
+    return render(request, 'profilecreate.html', {"u_form": u_form, "p_form": p_form, })

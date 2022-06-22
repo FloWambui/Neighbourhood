@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    form.form-group{
+        width: 100%;
+        margin-left: 0.6%;
+        border: 3px solid blue;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 50px auto;
+    }
+    .col-md-10{
+        text-align: center;
+        font-weight: bold;
+    }
+    h1{
+        font-size: 40px;
+    }
+    a{
+        color: white;
+    }
+</style>
+
+<div class="container-fluid mb-0 d-flex justify-content-center">
+    <div class="row">
+        <div class="col-md-10 d-flex justify-content-center mt-5">
+
+            <form action="{% url 'app:create_profile' %}" class="form-group mt-3" method="post"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{u_form|crispy}}
+                    {{p_form|crispy}}
+                    <button type="submit" class="btn btn-sm btn-warning btn-block mt-5">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
