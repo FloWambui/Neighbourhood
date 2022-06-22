@@ -24,7 +24,7 @@ The following languages have been used on this project:
 
 
 
-- Live link to view the project <a target="_blank" href="">Neighbourhood</a>
+- Live link to view the project <a target="_blank" href="https://neighbourhoodconnect.herokuapp.com">Neighbourhood</a>
 
 
 ### User Stories
