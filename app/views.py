@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.shortcuts import  render, redirect
-from .forms import NewUserForm
+from .forms import *
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm 
+from django.contrib.auth.decorators import login_required
+from .models import *
 
 # Create your views here.
 
@@ -32,10 +34,20 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"You are now logged in as {username}.")
-				return redirect("/")
+				return redirect("app:index")
 			else:
 				messages.error(request,"Invalid username or password.")
 		else:
 			messages.error(request,"Invalid username or password.")
 	form = AuthenticationForm()
 	return render(request=request, template_name="registration/login.html", context={"login_form":form})
+
+@login_required
+def index(request):
+    title = "Neighbourhood"
+    business = Business.objects.all().filter
+    context = {
+        "title": title,
+        "business": business
+    }
+    return render(request, 'main.html', context)

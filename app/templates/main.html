@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{% block content %}
+{{block.super}}
+<div class="container-fluid mt-4">
+    <h1 class="text-center"> <b>Neighbourhood Businesses</b></h1>
+    
+    <div class="row">
+        
+        
+        <div class="col-md-4">
+            <div class="card card-default">
+                <div class="card-heading inline">
+                    <div class="row">
+                        <div class="col-md-4 mt-2 mb-2 text-center">
+                            <a href="" style="color:black;">
+                                <img src="{{biz.owner.profile.image.url}}" class="img-responsive rounded-circle"
+                                    style="width:50px; height:50px;" alt="profile image">
+                            </a>
+                        </div>
+                        <div class="col-md-8 mt-2 mb-2">
+                            <h4><b>{{biz.name}}</b></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <div class="view" style="height: 245px; padding:2%;">
+                        <img src="{{biz.image.url}}" width="100%" height="300px" class="img-responsive"
+                            alt="business image">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p>Address: <b>{{biz.address}}</b>
+                        <br> Owner: <b>{{biz.owner}}</b>
+                        <br> Details: <b>{{biz.details}}</b>
+                        <br>
+                        <p>Posted: <b>{{biz.create_date|timesince}}</b></p>
+                </div>
+            </div>
+            <br>
+        </div>      
+        
+    </div>
+</div>
+{% endblock %}

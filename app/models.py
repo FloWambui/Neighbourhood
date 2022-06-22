@@ -18,6 +18,10 @@ class NeighbourHood(models.Model):
     def create_neighbourhood(self):
         self.save()
 
+    def save_neighbourhood(self):
+        return self.save()
+
+
     @classmethod
     def delete_neighbourhood(cls, id):
         cls.objects.filter(id=id).delete()
@@ -80,4 +84,4 @@ class Announcements(models.Model):
         return f'{self.title}'
 
     class Meta:
-        ordering = ['-post_date']
+        ordering = ['-created_on']
