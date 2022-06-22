@@ -1,67 +1,36 @@
-{%extends 'base.html'%}
-{% block content %}
-{{block.super}}
-<style>
-    .card {
-        height: 90vh;
-    }
+<nav class="navbar navbar-expand-lg bg-warning">
+  <a class="navbar-brand" href="#">Hood-Connect</a>
+  <div class="container">
 
-    .card-footer {
-        height: 55vh;
-    }
-</style>
-<div class="container-fluid mt-4">
-    <h1 class="text-center"> <b>Enterprises</b></h1>
-    <hr>
-    <div class="row">
-        {% if business %}
-        {% for biz in business %}
-        <div class="col-md-4">
-            <div class="card card-default">
-                <div class="card-heading inline">
-                    <div class="row">
-                        <div class="col-md-4 mt-2 mb-2 text-center">
-                            <a href="{%url 'profile'%}" style="color:black;">
-                                <img src="{{biz.owner.profile.image.url}}" class="img-responsive rounded-circle"
-                                    style="width:50px; height:50px;" alt="profile image">
-                            </a>
-                        </div>
-                        <div class="col-md-8 mt-2 mb-2">
-                            <h4><b>{{biz.name}}</b></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-title">
-                    <div class="view" style="height: 245px; padding:2%;">
-                        <img src="{{biz.image.url}}" width="100%" height="300px" class="img-responsive"
-                            alt="business image">
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <p>Address: <b>{{biz.address}}</b>
-                        <br> Owner: <b>{{biz.owner}}</b>
-                        <br> Details: <b>{{biz.details}}</b>
-                        <br>
-                        <p>Posted: <b>{{biz.create_date|timesince}}</b></p>
-                </div>
-            </div>
-            <br>
-        </div>
-        {% endfor %}
-        {% else %}
-        <div class="container">
-
-            <div class=" col-md-8 d-flex justify-content-center alert alert-warning alert-dismissible fade show"
-                role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <strong>
-                    <p>No enterprise has been posted for view yet</p>
-                </strong>
-            </div>
-        </div>
-        {% endif %}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav d-flex justify-content-center mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Announcements</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Amenities</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Businesses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Neighbourhood</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link active" href="#">Profile</a>
+        </li>
+        <li class="nav-item active text-center">
+          <a class="nav-link active" href="/logout">Logout</a>
+        </li>
+      </ul>
     </div>
-</div>
-{% endblock %}
+    <form class="d-flex justify-content-end" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
