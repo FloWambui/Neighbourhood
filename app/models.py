@@ -37,7 +37,7 @@ class Amenities(models.Model):
     image = CloudinaryField('image',blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
+    hood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
 
     def save_amenities(self):
         self.save()

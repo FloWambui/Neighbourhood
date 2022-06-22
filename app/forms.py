@@ -43,3 +43,9 @@ class PostAnnouncement(forms.ModelForm):
     class Meta:
         model = Announcements
         fields = ["title", "details"]
+
+
+class AddAmenity(forms.ModelForm):
+    class Meta:
+        model = Amenities
+        fields = ["name", "location", "contact", "image"]

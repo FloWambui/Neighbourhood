@@ -116,3 +116,21 @@ def announcements(request):
     else:
         form = PostAnnouncement(auto_id=False)
     return render(request, 'announce.html', {"announcements": announcements, "form": form})
+
+@login_required(login_url='/login')
+def amenities(request):
+    user = Profile.objects.get(user=request.user.id)
+    amenities = Amenities.objects.all().filter(hood=user.hood)
+    current_user = request.user
+    if request.method == 'POST':
+        hood = NeighbourHood.objects.get(name=user.hood)
+        form = AddAmenity(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.author = current_user
+            image.hood = hood
+            image.save()
+            return redirect('/amenities/')
+    else:
+        form = AddAmenity(auto_id=False)
+    return render(request, 'amenity.html', {"amenities": amenities, "form": form})

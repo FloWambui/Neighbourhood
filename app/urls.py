@@ -14,4 +14,5 @@ urlpatterns=[
     re_path('profile/', views.profile, name='profile'),
     re_path('post_business/', views.post_business, name='post_business'),
     re_path('announce/', views.announcements, name='announce'),
+    re_path('amenities/', views.amenities, name='amenities'),
 ]
