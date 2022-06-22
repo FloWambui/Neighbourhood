@@ -75,3 +75,11 @@ def create_profile(request):
         p_form = ProfileUpdateForm(request.POST,
                                    request.FILES, instance=request.user.profile)
     return render(request, 'profilecreate.html', {"u_form": u_form, "p_form": p_form, })
+
+@login_required
+def profile(request):
+    user = request.user
+    context = {
+        "user": user,
+    }
+    return render(request, 'profile.html', context)

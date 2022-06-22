@@ -11,4 +11,5 @@ urlpatterns=[
     re_path("logout", views.logout_request, name= "logout"),
     re_path('index/', views.index, name='index'),
     re_path('create_profile', views.create_profile, name='create_profile'),
+    re_path('profile/', views.profile, name='profile'),
 ]
