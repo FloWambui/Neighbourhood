@@ -71,6 +71,10 @@ class Business(models.Model):
     class Meta:
         ordering = ["-create_date"]
 
+    @classmethod
+    def search_by_name(cls, search_term):
+        business = cls.objects.filter(name__icontains=search_term)
+        return business
 
 
 class Announcements(models.Model):

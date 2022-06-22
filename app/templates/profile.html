@@ -3,8 +3,9 @@
 
 <div class="container-fluid">
     <div class="row">
+        <div class="col-md-1"></div>
         <div class="col-md-4">
-            <h1>My Hood: <b>{{user.profile.hood}}</b></h1>
+            <h3>Neighbourhood: <b>{{user.profile.hood}}</b></h3>
             <div class="card"style="background-color: white;">
                 <div class="card-title">
                     <img src="{{user.profile.hood.image.url}}" width="100%" height="400px" class="img-responsive"
@@ -12,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
         <div class="col-md-4 mb-3 mt-3">
             <div class="card" style="background-color: white;">
                 <div class="card-title">
@@ -20,7 +21,7 @@
                         alt="profile">
                 </div>
                 <div class="card-footer text-center" style="background-color: white;">
-                    <em><h3 class="text-dark">{{user.username|capfirst}}</h3></em>
+                    <h2 class="text-dark">{{user.username|capfirst}}</h2>
                     <p>Hood: <b>{{user.profile.hood}}</b></p>
                     <p>Bio: <b>{{user.profile.bio}}</b></p>
                     <p>Contacts: <b>{{user.profile.contacts}}</b></p>
