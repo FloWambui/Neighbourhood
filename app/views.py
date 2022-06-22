@@ -83,3 +83,18 @@ def profile(request):
         "user": user,
     }
     return render(request, 'profile.html', context)
+
+
+@login_required(login_url='/login')
+def post_business(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = PostBusinessForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.owner = current_user
+            image.save()
+        return redirect('/')
+    else:
+        form = PostBusinessForm(auto_id=False)
+    return render(request, 'business.html', {"form": form})

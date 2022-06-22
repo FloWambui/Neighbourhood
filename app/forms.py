@@ -32,3 +32,8 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ["contacts", "image", "bio", "hood"]
+
+class PostBusinessForm(forms.ModelForm):
+    class Meta:
+        model = Business
+        fields = ["name", "address", "image", "details", "hood"]

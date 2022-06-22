@@ -1,16 +1,25 @@
 {%extends 'base.html'%}
 {% block content %}
 {{block.super}}
+<style>
+    .card {
+        height: 75vh;
+    }
 
+    .card-footer {
+        height: 45vh;
+    }
 
-<div class="container-fluid mt-4">
-    <h1 class="text-center"> <b>Neighbourhood Businesses</b></h1>
-    <div class="row">
+</style>
+<div class="container-fluid mt-2">
+    <h1 class="text-center pt-3"> <b>Neighbourhood Businesses</b></h1>
+
+    <div class="row mt-2">
         {% if business %}
         {% for biz in business %}
         <div class="col-md-4">
-            <div class="card" style="background-color:white;border: 3px solid rgb(247,193,50); border-radius: 10px;">
-                <div class="card-heading inline px-3">
+            <div class="card card-default" style="background-color:white;border: 3px solid rgb(247,193,50); border-radius: 10px;">
+                <div class="card-heading inline">
                     <div class="row">
                         <div class="col-md-4 mt-2 mb-2 text-center">
                             <a href="{%url 'app:profile'%}" style="color:black;">
@@ -23,18 +32,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-title px-3">
-                    <div class="view">
+                <div class="card-title">
+                    <div class="view" style="height: 245px; padding:2%;">
                         <img src="{{biz.image.url}}" width="100%" height="280px" class="img-responsive"
                             alt="business image">
                     </div>
                 </div>
-                <div class="card-footer text-start px-3" style="font-size: 18px;font-weight:700;">
-                    <p>Address: <b>{{biz.address}}</b></p>
-                    <p>Owner: <b>{{biz.owner|capfirst}}</p>
-                    <p>Details: <b>{{biz.details}}</p>
-                    <p>Posted: <b>{{biz.create_date|timesince}} ago</p>
-
+                <div class="card-footer mt-5" style="font-size: 18px;">
+                    <p class="text-muted">Address: <span class="text-dark">{{biz.address}}</span></p>
+                    <p class="text-muted">Owner: <span class="text-dark">{{biz.owner|capfirst}}</span></p>
+                    <p class="text-muted">Details: <span class="text-dark">{{biz.details}}</span></p>
+                    <p class="text-muted">Posted: <span class="text-dark">{{biz.create_date|timesince}} ago. </span></p>
                 </div>
             </div>
             <br>
