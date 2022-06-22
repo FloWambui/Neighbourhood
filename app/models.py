@@ -51,3 +51,33 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+class Business(models.Model):
+    name = models.CharField(max_length=20)
+    address = models.CharField(max_length=20)
+    create_date = models.DateTimeField(auto_now_add=True)
+    image = CloudinaryField('image',blank=True)
+    details = models.TextField(max_length=500)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    hood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        ordering = ["-create_date"]
+
+
+
+class Announcements(models.Model):
+    title = models.CharField(max_length=20)
+    created_on = models.DateTimeField(auto_now_add=True)
+    details = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    hood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        ordering = ['-post_date']
