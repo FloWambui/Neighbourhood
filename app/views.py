@@ -87,17 +87,20 @@ def profile(request):
 
 @login_required
 def post_business(request):
+    user = Profile.objects.get(user=request.user.id)
+    businesses = Business.objects.all().filter(hood=user.hood)
     current_user = request.user
     if request.method == 'POST':
+        hood = NeighbourHood.objects.get(name=user.hood)
         form = PostBusinessForm(request.POST, request.FILES)
         if form.is_valid():
             image = form.save(commit=False)
             image.owner = current_user
             image.save()
-        return redirect('/')
+        return redirect('post_business/')
     else:
         form = PostBusinessForm(auto_id=False)
-    return render(request, 'business.html', {"form": form})
+    return render(request, 'business.html', {"businesses": businesses,"form": form})
 
 @login_required
 def announcements(request):

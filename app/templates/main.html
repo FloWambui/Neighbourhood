@@ -12,7 +12,7 @@
 
 </style>
 <div class="container-fluid mt-2">
-    <h1 class="text-center pt-3"> <b>Neighbourhood Businesses</b></h1>
+    <h1 class="text-center pt-3"> <b>All Posted Businesses</b></h1>
 
     <div class="row mt-2">
         {% if business %}
@@ -43,6 +43,7 @@
                     <p class="text-muted">Owner: <span class="text-dark">{{biz.owner|capfirst}}</span></p>
                     <p class="text-muted">Details: <span class="text-dark">{{biz.details}}</span></p>
                     <p class="text-muted">Posted: <span class="text-dark">{{biz.create_date|timesince}} ago. </span></p>
+                    <p class="text-muted">Neighbourhood: <span class="text-dark">{{biz.hood|capfirst}}</span></p>
                 </div>
             </div>
             <br>
