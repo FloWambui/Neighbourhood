@@ -7,11 +7,11 @@
 
 
 
-#### Description
-Ulinzihood is a web application that keeps users informed about what's going on in their neighborhood.A user logs in and establishes a profile, decides the kind of information to get based on their location. Users may list their enterprises and view the entries of other businesses in the region and all through the app. Users may also identify local amenities.
+### Description
+This is a web application that keeps users informed about what's going on in their neighborhood.A user logs in and establishes a profile, decides the kind of information to get based on their location. Users may list their enterprises and view the entries of other businesses in the region and all through the app. Users may also identify local amenities.
 
 
-#### Technology Used
+### Technology Used
 
 The following languages have been used on this project:
 
@@ -27,7 +27,7 @@ The following languages have been used on this project:
 - Live link to view the project <a target="_blank" href="">Neighbourhood</a>
 
 
-#### User Stories
+### User Stories
 These are the behaviours/features that the application implements for use by a user.
 
 Users would like to:
@@ -39,7 +39,7 @@ Users would like to:
 * Rate Projects.
 
 
-#### Admin Abilities
+### Admin Abilities
 These are the behaviours/features that the application implements for use by the admin.
 
 Admin should:
@@ -48,7 +48,7 @@ Admin should:
 * Manage the application.
 
 
-#### Specifications
+### Specifications
 | Behaviour | Input | Output |
 | :---------------- | :---------------: | ------------------: |
 | Admin Authentication | **On demand** | Access Admin dashboard |
@@ -59,7 +59,7 @@ Admin should:
 | To search businesses by name | **Enter text in search bar** | Users can search by Business Name|
 
 
-#### Setup Installation
+### Setup Installation
 
 - Copy the github repository url
 - Clone to your computer
@@ -96,7 +96,7 @@ python manage.py runserver
 - Open the browser and navigate to http://127.0.0.1:8000/ to see the application in action
 
 
-#### Authors Info
+### Authors Info
 Email Address- gflorencewambui@gmail.com.
 
 Copyright (c) [2022] Florence Wambui.
