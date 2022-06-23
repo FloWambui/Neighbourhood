@@ -56,6 +56,10 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
+    def save_profile(self):
+        self.save()
+
+
 class Business(models.Model):
     name = models.CharField(max_length=20)
     address = models.CharField(max_length=20)
